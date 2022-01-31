@@ -195,7 +195,6 @@ class Tetris:
         self.total_score: int = 0
         self.blockQueue: List[Block] = []
         self.currentBlock: Block = random.choice(block_list)()
-        self.front = Front()
 
         for i in range(25):
             self.map.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -208,7 +207,6 @@ class Tetris:
         _map = copy.deepcopy(self.map)
         for cube in self.currentBlock.cubes:
             _map[cube[1]][cube[0]] = cube[2]
-        self.front.show(map=_map)
 
         if feedback is not None and feedback.value == MoveFeedback.STACKED.value:
             for cube in self.currentBlock.cubes:
@@ -219,19 +217,4 @@ class Tetris:
                 while all(cube > 0 for cube in self.map[i]):
                     self.map.pop(i)
                     self.map.insert(0, [0] * 10)
-        return score
-
-    def run(self):
-        while True:
-            command = self.front.get_command()
-            self.tick(command=command)
-            time.sleep(0.1)
-
-
-t = Tetris()
-t.run()
-
-
-"""
-
-"""
+        return score, _map
