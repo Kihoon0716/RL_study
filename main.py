@@ -2,14 +2,7 @@ from backend import Tetris
 from front import Front
 import time
 import random
-from enum import Enum
-
-class Move(Enum):
-    TURN = 0
-    LEFT = 1
-    RIGHT = 2
-    DROP = 3
-    DOWN = 4
+from backend import Move
 
 def run():
     front = Front()
