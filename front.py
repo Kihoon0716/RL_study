@@ -33,7 +33,7 @@ START_POINT_Y = 200
 size = [1000, 800]
 screen = pygame.display.set_mode(size)
 
-pygame.display.set_caption("Game Title")
+pygame.display.set_caption("Tetris")
 
 
 done = False
