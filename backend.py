@@ -204,6 +204,7 @@ class Tetris:
         if command is not -1:
             feedback = self.currentBlock.move(command, self.map)
         score = 0
+        # TODO: Block 제거시에 score 증가. 게임오버시 score 대폭 감소
         _map = copy.deepcopy(self.map)
         for cube in self.currentBlock.cubes:
             _map[cube[1]][cube[0]] = cube[2]
@@ -217,4 +218,5 @@ class Tetris:
                 while all(cube > 0 for cube in self.map[i]):
                     self.map.pop(i)
                     self.map.insert(0, [0] * 10)
+                    score += 1
         return score, _map
