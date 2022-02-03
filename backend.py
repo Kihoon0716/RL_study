@@ -305,9 +305,6 @@ class Tetris:
         self.blockQueue: List[Block] = []
         self.currentBlock: Block = random.choice(block_list)()
 
-        for i in range(25):
-            self.map.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-
     def step(self, command) -> int:
         feedback = None
         if command is not -1:
@@ -330,9 +327,11 @@ class Tetris:
                     score += 1
 
             if not all(self.map[3][i] == 0 for i in range(0, 10)):
-                self.map.clear()
-                for i in range(25):
-                    self.map.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
                 score = -100
                 done = True
         return _map, score, done, None
+
+    def reset(self):
+        self.map.clear()
+        for i in range(25):
+            self.map.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
