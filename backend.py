@@ -305,10 +305,10 @@ class Tetris:
         self.blockQueue: List[Block] = []
         self.currentBlock: Block = random.choice(block_list)()
 
-    def step(self, command) -> int:
+    def step(self, command: int) -> int:
         feedback = None
         if command is not -1:
-            feedback = self.currentBlock.move(command, self.map)
+            feedback = self.currentBlock.move(Move(command), self.map)
         score = 0
         done = False
         _map = copy.deepcopy(self.map)
