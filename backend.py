@@ -313,6 +313,7 @@ class Tetris:
         if command is not -1:
             feedback = self.currentBlock.move(command, self.map)
         score = 0
+        done = False
         _map = copy.deepcopy(self.map)
         for cube in self.currentBlock.cubes:
             _map[cube[1]][cube[0]] = cube[2]
@@ -333,4 +334,5 @@ class Tetris:
                 for i in range(25):
                     self.map.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
                 score = -100
-        return score, _map
+                done = True
+        return _map, score, done, None
