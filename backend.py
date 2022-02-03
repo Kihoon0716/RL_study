@@ -106,9 +106,19 @@ class BlockBar(Block):
     @property
     def cubes(self) -> List[List[int]]:
         if self.turn_count % 2 == 0:
-            return [[self.center.x, self.center.y - 1, self.color], [self.center.x, self.center.y, self.color], [self.center.x, self.center.y + 1, self.color], [self.center.x, self.center.y + 2, self.color]]
+            return [
+                [self.center.x, self.center.y - 1, self.color],
+                [self.center.x, self.center.y, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+                [self.center.x, self.center.y + 2, self.color],
+            ]
         else:
-            return [[self.center.x - 1, self.center.y, self.color], [self.center.x, self.center.y, self.color], [self.center.x + 1, self.center.y, self.color], [self.center.x + 2, self.center.y, self.color]]
+            return [
+                [self.center.x - 1, self.center.y, self.color],
+                [self.center.x, self.center.y, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+                [self.center.x + 2, self.center.y, self.color],
+            ]
 
 
 class BlockRect(Block):
@@ -117,7 +127,13 @@ class BlockRect(Block):
 
     @property
     def cubes(self) -> List[List[int]]:
-        return [[self.center.x, self.center.y, self.color], [self.center.x + 1, self.center.y + 1, self.color], [self.center.x + 1, self.center.y, self.color], [self.center.x, self.center.y + 1, self.color]]
+        return [
+            [self.center.x, self.center.y, self.color],
+            [self.center.x + 1, self.center.y + 1, self.color],
+            [self.center.x + 1, self.center.y, self.color],
+            [self.center.x, self.center.y + 1, self.color],
+        ]
+
 
 class BlockZ(Block):
     def __init__(self) -> None:
@@ -126,9 +142,21 @@ class BlockZ(Block):
     @property
     def cubes(self) -> List[List[int]]:
         if self.turn_count % 2 == 0:
-            return [[self.center.x, self.center.y, self.color], [self.center.x - 1, self.center.y, self.color], [self.center.x, self.center.y + 1, self.color], [self.center.x + 1, self.center.y + 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x - 1, self.center.y, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+                [self.center.x + 1, self.center.y + 1, self.color],
+            ]
         elif self.turn_count % 2 == 1:
-            return [[self.center.x, self.center.y, self.color], [self.center.x, self.center.y + 1, self.color], [self.center.x + 1, self.center.y, self.color], [self.center.x + 1, self.center.y - 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+                [self.center.x + 1, self.center.y - 1, self.color],
+            ]
+
+
 class BlockZR(Block):
     def __init__(self) -> None:
         super().__init__()
@@ -136,9 +164,20 @@ class BlockZR(Block):
     @property
     def cubes(self) -> List[List[int]]:
         if self.turn_count % 2 == 0:
-            return [[self.center.x, self.center.y, self.color], [self.center.x + 1, self.center.y, self.color], [self.center.x, self.center.y + 1, self.color], [self.center.x - 1, self.center.y + 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+                [self.center.x - 1, self.center.y + 1, self.color],
+            ]
         elif self.turn_count % 2 == 1:
-            return [[self.center.x, self.center.y, self.color], [self.center.x, self.center.y - 1, self.color], [self.center.x + 1, self.center.y, self.color], [self.center.x + 1, self.center.y + 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x, self.center.y - 1, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+                [self.center.x + 1, self.center.y + 1, self.color],
+            ]
+
 
 class BlockMountain(Block):
     def __init__(self) -> None:
@@ -147,13 +186,34 @@ class BlockMountain(Block):
     @property
     def cubes(self) -> List[List[int]]:
         if self.turn_count % 4 == 0:
-            return [[self.center.x, self.center.y, self.color], [self.center.x, self.center.y - 1, self.color], [self.center.x - 1, self.center.y, self.color], [self.center.x + 1, self.center.y, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x, self.center.y - 1, self.color],
+                [self.center.x - 1, self.center.y, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+            ]
         elif self.turn_count % 4 == 1:
-            return [[self.center.x, self.center.y, self.color], [self.center.x, self.center.y - 1, self.color], [self.center.x, self.center.y + 1, self.color], [self.center.x - 1, self.center.y, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x, self.center.y - 1, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+                [self.center.x - 1, self.center.y, self.color],
+            ]
         elif self.turn_count % 4 == 2:
-            return [[self.center.x, self.center.y, self.color], [self.center.x - 1, self.center.y, self.color], [self.center.x + 1, self.center.y, self.color], [self.center.x, self.center.y + 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x - 1, self.center.y, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+            ]
         elif self.turn_count % 4 == 3:
-            return [[self.center.x, self.center.y, self.color], [self.center.x, self.center.y - 1, self.color], [self.center.x, self.center.y + 1, self.color], [self.center.x + 1, self.center.y, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x, self.center.y - 1, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+            ]
+
 
 class BlockSeven(Block):
     def __init__(self) -> None:
@@ -162,13 +222,34 @@ class BlockSeven(Block):
     @property
     def cubes(self) -> List[List[int]]:
         if self.turn_count % 4 == 0:
-            return [[self.center.x, self.center.y, self.color], [self.center.x, self.center.y - 1, self.color], [self.center.x - 1, self.center.y - 1, self.color], [self.center.x, self.center.y + 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x, self.center.y - 1, self.color],
+                [self.center.x - 1, self.center.y - 1, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+            ]
         elif self.turn_count % 4 == 1:
-            return [[self.center.x, self.center.y, self.color], [self.center.x - 1, self.center.y, self.color], [self.center.x + 1, self.center.y, self.color], [self.center.x - 1, self.center.y + 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x - 1, self.center.y, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+                [self.center.x - 1, self.center.y + 1, self.color],
+            ]
         elif self.turn_count % 4 == 2:
-            return [[self.center.x, self.center.y, self.color], [self.center.x, self.center.y + 1, self.color], [self.center.x + 1, self.center.y + 1, self.color], [self.center.x, self.center.y - 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+                [self.center.x + 1, self.center.y + 1, self.color],
+                [self.center.x, self.center.y - 1, self.color],
+            ]
         elif self.turn_count % 4 == 3:
-            return [[self.center.x, self.center.y, self.color], [self.center.x - 1, self.center.y, self.color], [self.center.x + 1, self.center.y, self.color], [self.center.x + 1, self.center.y - 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x - 1, self.center.y, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+                [self.center.x + 1, self.center.y - 1, self.color],
+            ]
+
 
 class BlockSevenR(Block):
     def __init__(self) -> None:
@@ -177,16 +258,44 @@ class BlockSevenR(Block):
     @property
     def cubes(self) -> List[List[int]]:
         if self.turn_count % 4 == 0:
-            return [[self.center.x, self.center.y, self.color], [self.center.x, self.center.y - 1, self.color], [self.center.x, self.center.y + 1, self.color], [self.center.x + 1, self.center.y - 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x, self.center.y - 1, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+                [self.center.x + 1, self.center.y - 1, self.color],
+            ]
         elif self.turn_count % 4 == 1:
-            return [[self.center.x, self.center.y, self.color], [self.center.x - 1, self.center.y, self.color], [self.center.x + 1, self.center.y, self.color], [self.center.x - 1, self.center.y - 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x - 1, self.center.y, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+                [self.center.x - 1, self.center.y - 1, self.color],
+            ]
         elif self.turn_count % 4 == 2:
-            return [[self.center.x, self.center.y, self.color], [self.center.x, self.center.y + 1, self.color], [self.center.x, self.center.y - 1, self.color], [self.center.x - 1, self.center.y + 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x, self.center.y + 1, self.color],
+                [self.center.x, self.center.y - 1, self.color],
+                [self.center.x - 1, self.center.y + 1, self.color],
+            ]
         elif self.turn_count % 4 == 3:
-            return [[self.center.x, self.center.y, self.color], [self.center.x - 1, self.center.y, self.color], [self.center.x + 1, self.center.y, self.color], [self.center.x + 1, self.center.y + 1, self.color]]
+            return [
+                [self.center.x, self.center.y, self.color],
+                [self.center.x - 1, self.center.y, self.color],
+                [self.center.x + 1, self.center.y, self.color],
+                [self.center.x + 1, self.center.y + 1, self.color],
+            ]
 
 
-block_list = [BlockBar, BlockRect, BlockZ, BlockZR, BlockMountain, BlockSeven, BlockSevenR]
+block_list = [
+    BlockBar,
+    BlockRect,
+    BlockZ,
+    BlockZR,
+    BlockMountain,
+    BlockSeven,
+    BlockSevenR,
+]
 
 
 class Tetris:
@@ -199,7 +308,7 @@ class Tetris:
         for i in range(25):
             self.map.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
-    def tick(self, command) -> int:
+    def step(self, command) -> int:
         feedback = None
         if command is not -1:
             feedback = self.currentBlock.move(command, self.map)
@@ -218,7 +327,7 @@ class Tetris:
                     self.map.pop(i)
                     self.map.insert(0, [0] * 10)
                     score += 1
-            
+
             if not all(self.map[3][i] == 0 for i in range(0, 10)):
                 self.map.clear()
                 for i in range(25):
