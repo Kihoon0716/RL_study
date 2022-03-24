@@ -4,6 +4,7 @@ import random
 import time
 from front import Front
 import copy
+import numpy as np
 
 
 class Pos:
@@ -304,16 +305,20 @@ class Tetris:
         self.total_score: int = 0
         self.blockQueue: List[Block] = []
         self.currentBlock: Block = random.choice(block_list)()
+        self.count = 0
 
     def step(self, command: int) -> int:
-        feedback = None
-        if command is not -1:
-            feedback = self.currentBlock.move(Move(command), self.map)
+        self.count += 1
         score = 0
         done = False
+        if self.count % 3 == 0:
+            _, score, done, _ = self.step(4)
+        feedback = None
+        if command != -1:
+            feedback = self.currentBlock.move(Move(command), self.map)
         _map = copy.deepcopy(self.map)
         for cube in self.currentBlock.cubes:
-            _map[cube[1]][cube[0]] = cube[2]
+            _map[cube[1]][cube[0]] = 100
 
         if feedback is not None and feedback.value == MoveFeedback.STACKED.value:
             for cube in self.currentBlock.cubes:
@@ -324,14 +329,21 @@ class Tetris:
                 while all(cube > 0 for cube in self.map[i]):
                     self.map.pop(i)
                     self.map.insert(0, [0] * 10)
-                    score += 1
+                    score += 1000
 
-            if not all(self.map[3][i] == 0 for i in range(0, 10)):
+            if not all(self.map[4][i] == 0 for i in range(0, 10)):
                 score = -100
                 done = True
-        return _map, score, done, None
+        return np.array(_map), score, done, {}
 
     def reset(self):
         self.map.clear()
         for i in range(25):
             self.map.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+        return np.array(self.map)
+
+    def close(self):
+        pass
+
+    def render(self):
+        pass
